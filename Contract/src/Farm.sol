@@ -168,45 +168,47 @@ contract Farm {
         emit Event.ProductAdded(msg.sender, _productName);
     }
 
-    function submitReview(uint256 _productId, string memory _review) public {
-        bool _hasPurchased = false;
-        for (uint256 i = 0; i < productBuyers[_productId].length; i++) {
-            if (productBuyers[_productId][i] == msg.sender) {
-                _hasPurchased = true;
-                break;
+    function updateFarmProduct(
+        uint256 _index,
+        string memory _productName,
+        string memory _productImage,
+        string memory _productDescription,
+        uint256 _productPrice
+    ) public {
+        if (_index >= farmProducts[msg.sender].length) {
+            revert Error.InvalidProductIndex();
+        }
+        farmProducts[msg.sender][_index].product_name = _productName;
+        farmProducts[msg.sender][_index].product_image = _productImage;
+        farmProducts[msg.sender][_index]
+            .product_description = _productDescription;
+        farmProducts[msg.sender][_index].product_price = _productPrice;
+        emit Event.ProductUpdated(msg.sender, _productName);
+    }
+
+    function getFarmProducts() public view returns (FarmProducts[] memory) {
+        return farmProducts[msg.sender];
+    }
+
+    function getAllFarmProducts() public view returns (FarmProducts[] memory) {
+        uint256 totalProducts = 0;
+        for (uint256 i = 0; i < farms.length; i++) {
+            address farmerAddress = nameToAddress[farms[i].business_name];
+            totalProducts += farmProducts[farmerAddress].length;
+        }
+
+        FarmProducts[] memory allProducts = new FarmProducts[](totalProducts);
+        uint256 index = 0;
+        for (uint256 i = 0; i < farms.length; i++) {
+            address farmerAddress = nameToAddress[farms[i].business_name];
+            FarmProducts[] memory products = farmProducts[farmerAddress];
+            for (uint256 j = 0; j < products.length; j++) {
+                allProducts[index] = products[j];
+                index++;
             }
         }
 
-        if (!_hasPurchased) {
-            revert Error.OnlyBuyersCanReview();
-        }
-
-        require(
-            !hasReviewed[_productId][msg.sender],
-            "You have already reviewed this product"
-        );
-
-        productReviews[_productId].push(
-            Review({reviewer: msg.sender, review: _review})
-        );
-
-        hasReviewed[_productId][msg.sender] = true;
-        productReviews[_productId].push(Review(msg.sender, _review));
-
-        emit Event.ProductReviewed(msg.sender, _productId, _review);
-    }
-
-    function hasPurchased(
-        address buyer,
-        uint256 _productId
-    ) external view returns (bool) {
-        return purchases[buyer][_productId];
-    }
-
-    function getProductReviews(
-        uint256 _productId
-    ) public view returns (Review[] memory) {
-        return productReviews[_productId];
+        return allProducts;
     }
 
     function addProductToCart(uint256 _productId) public {
@@ -244,17 +246,6 @@ contract Farm {
         address _buyer
     ) public view returns (FarmProducts[] memory) {
         return cartProducts[_buyer];
-    }
-
-    function removeProductFromCart(uint256 _productId) public {
-        FarmProducts[] storage cart = cartProducts[msg.sender];
-        for (uint256 i = 0; i < cart.length; i++) {
-            if (cart[i].product_id == _productId) {
-                cart[i] = cart[cart.length - 1];
-                cart.pop();
-                break;
-            }
-        }
     }
 
     function purchaseProduct(uint256 _productId) public payable {
@@ -303,53 +294,62 @@ contract Farm {
         payable(productOwner).transfer(msg.value);
     }
 
+    function removeProductFromCart(uint256 _productId) public {
+        FarmProducts[] storage cart = cartProducts[msg.sender];
+        for (uint256 i = 0; i < cart.length; i++) {
+            if (cart[i].product_id == _productId) {
+                cart[i] = cart[cart.length - 1];
+                cart.pop();
+                break;
+            }
+        }
+    }
+
     function getPurchasedProducts(
         address _buyer
     ) public view returns (FarmProducts[] memory) {
         return purchasedProducts[_buyer];
     }
 
-    function updateFarmProduct(
-        uint256 _index,
-        string memory _productName,
-        string memory _productImage,
-        string memory _productDescription,
-        uint256 _productPrice
-    ) public {
-        if (_index >= farmProducts[msg.sender].length) {
-            revert Error.InvalidProductIndex();
-        }
-        farmProducts[msg.sender][_index].product_name = _productName;
-        farmProducts[msg.sender][_index].product_image = _productImage;
-        farmProducts[msg.sender][_index]
-            .product_description = _productDescription;
-        farmProducts[msg.sender][_index].product_price = _productPrice;
-        emit Event.ProductUpdated(msg.sender, _productName);
+    function hasPurchased(
+        address buyer,
+        uint256 _productId
+    ) external view returns (bool) {
+        return purchases[buyer][_productId];
     }
 
-    function getFarmProducts() public view returns (FarmProducts[] memory) {
-        return farmProducts[msg.sender];
-    }
-
-    function getAllFarmProducts() public view returns (FarmProducts[] memory) {
-        uint256 totalProducts = 0;
-        for (uint256 i = 0; i < farms.length; i++) {
-            address farmerAddress = nameToAddress[farms[i].business_name];
-            totalProducts += farmProducts[farmerAddress].length;
-        }
-
-        FarmProducts[] memory allProducts = new FarmProducts[](totalProducts);
-        uint256 index = 0;
-        for (uint256 i = 0; i < farms.length; i++) {
-            address farmerAddress = nameToAddress[farms[i].business_name];
-            FarmProducts[] memory products = farmProducts[farmerAddress];
-            for (uint256 j = 0; j < products.length; j++) {
-                allProducts[index] = products[j];
-                index++;
+    function submitReview(uint256 _productId, string memory _review) public {
+        bool _hasPurchased = false;
+        for (uint256 i = 0; i < productBuyers[_productId].length; i++) {
+            if (productBuyers[_productId][i] == msg.sender) {
+                _hasPurchased = true;
+                break;
             }
         }
 
-        return allProducts;
+        if (!_hasPurchased) {
+            revert Error.OnlyBuyersCanReview();
+        }
+
+        require(
+            !hasReviewed[_productId][msg.sender],
+            "You have already reviewed this product"
+        );
+
+        productReviews[_productId].push(
+            Review({reviewer: msg.sender, review: _review})
+        );
+
+        hasReviewed[_productId][msg.sender] = true;
+        productReviews[_productId].push(Review(msg.sender, _review));
+
+        emit Event.ProductReviewed(msg.sender, _productId, _review);
+    }
+
+    function getProductReviews(
+        uint256 _productId
+    ) public view returns (Review[] memory) {
+        return productReviews[_productId];
     }
 
     function getName(address _user) public view returns (string memory) {
