@@ -9,6 +9,7 @@ import {Error} from "../src/Library/Error.sol";
 contract FarmTest is Test {
     Farm public farm;
     address farmOwner = makeAddr("farmOwner");
+    address productBuyer = makeAddr("productBuyer");
 
     function setUp() public {
         address TokenAddress = makeAddr("Token");
@@ -108,6 +109,51 @@ contract FarmTest is Test {
             "New Harvest of corns",
             uint256(1)
         );
+        vm.stopPrank();
+    }
+
+    function test_Update_Farm_Product() public {
+        test_Add_Farm_Product();
+        vm.startPrank(farmOwner);
+        vm.expectRevert(Error.InvalidProductIndex.selector);
+        farm.updateFarmProduct(
+            11,
+            "Maize",
+            "MaizePicture",
+            "New Harvest of Maize",
+            uint256(111)
+        );
+        farm.updateFarmProduct(
+            0,
+            "Corn",
+            "CornPicture",
+            "New Harvest of corns",
+            uint256(1)
+        );
+    }
+
+    function test_Add_Product_To_Cart() public {
+        test_Add_Farm_Product();
+        vm.startPrank(farmOwner);
+        farm.addFarmProduct(
+            "Ginger",
+            "GingerPicture",
+            "New Harvest of Gingers",
+            uint256(5)
+        );
+        vm.stopPrank();
+        vm.startPrank(productBuyer);
+        farm.addProductToCart(1);
+        vm.stopPrank();
+    }
+
+    //TODO: Test Product Purchase
+
+    function test_Remove_Product_From_Cart() public {
+        test_Add_Product_To_Cart();
+        vm.startPrank(productBuyer);
+        farm.removeProductFromCart(1);
+        vm.stopPrank();
     }
 
     // function testFuzz_SetNumber(uint256 x) public {
