@@ -6,11 +6,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
-      {
-        protocol: 'https',
-        hostname: 'gateway.pinata.cloud',
-      },
     ],
+  },
+  webpack: (config) => {
+    config.externals.push("pino-pretty", "lokijs", "encoding");
+    return config;
   },
 };
 

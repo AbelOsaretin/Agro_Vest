@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React from 'react'
 import dynamic from "next/dynamic";
@@ -13,23 +11,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import useGetAllFarmProducts from '@/hooks/ReadHooks/useGetAllFarmProducts';
-import useGetAllFarms from '@/hooks/ReadHooks/useGetAllFarms';
-import useGetAllInvestors from '@/hooks/ReadHooks/useGetAllInvestors';
-import { formatEther } from 'viem';
-import useGetTotalSales from '@/hooks/ReadHooks/useGetTotalSales';
-import useGetTotalInvestment from '@/hooks/ReadHooks/useGetTotalInvestment';
-import useGetAllAvailableInvestment from '@/hooks/ReadHooks/useGetAllAvailableInvestment';
-import { FarmType, InvestmentType, InvestorsType, ProductType } from '@/utils/types';
+import { farmInvestments } from '@/utils/products';
 
 const UserDashboard = () => {
-    const {data: products} = useGetAllFarmProducts() as { data: ProductType[] };
-    const {data: farms } = useGetAllFarms() as {data: FarmType[]};
-    const {data: investors} = useGetAllInvestors() as {data: InvestorsType[]};
-    const {data: totalSales} = useGetTotalSales() as {data: bigint}
-    const {data: totalInvestment} = useGetTotalInvestment()  as {data: bigint}
-    const {data: availableInvestment} = useGetAllAvailableInvestment() as {data: InvestmentType[]}
-   
     return (
         <section className="w-full flex flex-col gap-6 py-4">
             <h1 className='uppercase text-darkgreen font-medium text-base md:text-xl'>Overview</h1>
@@ -37,23 +21,23 @@ const UserDashboard = () => {
             <main className="w-full grid lg:grid-cols-5 md:grid-cols-3 gap-4">
                 <div className="bg-gray-100 rounded-[5px] p-3 flex flex-col items-center justify-center gap-2">
                     <h4 className='text-gray-800 font-light'>Total Businesses</h4>
-                    <h1 className="text-2xl text-darkgreen font-semibold">{farms?.length}</h1>
+                    <h1 className="text-2xl text-darkgreen font-semibold">10</h1>
                 </div>
                 <div className="bg-gray-100 rounded-[5px] p-3 flex flex-col items-center justify-center gap-2">
                     <h4 className='text-gray-800 font-light'>Total Investors</h4>
-                    <h1 className="text-2xl text-darkgreen font-semibold">{investors?.length}</h1>
+                    <h1 className="text-2xl text-darkgreen font-semibold">98</h1>
                 </div>
                 <div className="bg-gray-100 rounded-[5px] p-3 flex flex-col items-center justify-center gap-2">
                     <h4 className='text-gray-800 font-light'>Total Investments</h4>
-                    <h1 className="text-2xl text-darkgreen font-semibold">{totalInvestment ? formatEther(totalInvestment) : '0'} ETH</h1>
+                    <h1 className="text-2xl text-darkgreen font-semibold">10 ETH</h1>
                 </div>
                 <div className="bg-gray-100 rounded-[5px] p-3 flex flex-col items-center justify-center gap-2">
                     <h4 className='text-gray-800 font-light'>Total Products</h4>
-                    <h1 className="text-2xl text-darkgreen font-semibold">{products?.length}</h1>
+                    <h1 className="text-2xl text-darkgreen font-semibold">194</h1>
                 </div>
                 <div className="bg-gray-100 rounded-[5px] p-3 flex flex-col items-center justify-center gap-2">
                     <h4 className='text-gray-800 font-light'>Total Sales</h4>
-                    <h1 className="text-2xl text-darkgreen font-semibold">{totalSales ? formatEther(totalSales) : '0'} ETH</h1>
+                    <h1 className="text-2xl text-darkgreen font-semibold">0.9 ETH</h1>
                 </div>
             </main>
 
@@ -75,23 +59,23 @@ const UserDashboard = () => {
                     <TableHeader>
                         <TableRow className='text-gray-800'>
                             <TableHead className="text-start">Farm Name</TableHead>
-                            <TableHead className='text-center'>Fund&apos;s Target</TableHead>
-                            <TableHead className='text-center'>Investors</TableHead>
-                            <TableHead className='text-center'>Amount Raised</TableHead>
-                            <TableHead className='text-center'>Amount Remaining</TableHead>
+                            <TableHead>Fund&apos;s Target</TableHead>
+                            <TableHead>Investors</TableHead>
+                            <TableHead>Amount Raised</TableHead>
+                            <TableHead>Balance</TableHead>
                             <TableHead className="text-center">Status</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {
-                            availableInvestment?.slice(0, 3).map((farm: InvestmentType, index: number) => (
+                            farmInvestments.slice(0, 3).map((farm, index) => (
                                 <TableRow key={index} className='text-gray-600'>
-                                    <TableCell className="font-medium text-start">{farm.name}</TableCell>
-                                    <TableCell className='text-center'>{Number(farm.minAmount)} ETH</TableCell>
-                                    <TableCell className='text-center'>{Number(farm.farmInvestorCount)}</TableCell>
-                                    <TableCell className='text-center'>{Number(farm.amountRaised)} ETH</TableCell>
-                                    <TableCell className='text-center'>{(Number(farm.minAmount) - Number(farm.amountRaised))} ETH</TableCell>
-                                    <TableCell className="text-center">{(farm.minAmount - farm.amountRaised ) > 0 ? "Ongoing": "Ended"}</TableCell>
+                                    <TableCell className="font-medium text-start">{farm.farmName}</TableCell>
+                                    <TableCell>{farm.fundsTarget}</TableCell>
+                                    <TableCell>{farm.investors}</TableCell>
+                                    <TableCell>{farm.amountRaised}</TableCell>
+                                    <TableCell>{farm.balance}</TableCell>
+                                    <TableCell className="text-center">{farm.status}</TableCell>
                                 </TableRow>
                             ))
                         }

@@ -1,13 +1,11 @@
 import { Montserrat as FontSans } from "next/font/google";
-import "@coinbase/onchainkit/styles.css";
 import "../styles/globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 import { Toaster } from "sonner";
 import { getMetadata } from "@/utils/getMetadata";
-import { headers } from "next/headers";
-import { cookieToInitialState } from "wagmi";
-import { getConfig } from "@/config/config";
+import { headers } from 'next/headers'
+import ContextProvider from "@/context";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -16,8 +14,7 @@ const fontSans = FontSans({
 
 export const metadata = getMetadata({
   title: "AgroVest",
-  description:
-    "Tokenize your business, attract investors, while showcasing your products on a thriving marketplace. ",
+  description: "Tokenize your business, attract investors, while showcasing your products on a thriving marketplace. ",
 });
 
 export default function RootLayout({
@@ -25,19 +22,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialState = cookieToInitialState(
-    getConfig(),
-    headers().get("cookie")
-  );
+
+  const headersObj = headers();
+  const cookies = headersObj.get('cookie')
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={cn("min-h-screen antialiased bg-white", fontSans.variable)}
+        className={cn(
+          "min-h-screen antialiased bg-white",
+          fontSans.variable
+        )}
       >
-        <Providers initialState={initialState}>
-          {children}
+        <ContextProvider cookies={cookies}>
+          <Providers>
+            {children}
+          </Providers>
           <Toaster richColors />
-        </Providers>
+        </ContextProvider>
       </body>
     </html>
   );

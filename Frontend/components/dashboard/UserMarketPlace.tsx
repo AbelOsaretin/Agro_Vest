@@ -5,13 +5,9 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import Categories from './Categories'
 import Products from './Products'
-import useGetAllFarmProducts from '@/hooks/ReadHooks/useGetAllFarmProducts'
-import { ProductType } from '@/utils/types'
 
 
 const MarketPlace = () => {
-    const {data: products} = useGetAllFarmProducts() as { data: ProductType[] };
-
     const path = usePathname()
     return (
         <section className="w-full flex flex-col gap-6 py-4">
@@ -25,7 +21,7 @@ const MarketPlace = () => {
 
             <Categories />
 
-            <Products title="All Products" data={products} />
+            <Products title="All Products" />
         </section>
     )
 }
