@@ -75,7 +75,7 @@ const AddInvestment = () => {
           onPress={onOpen}
           className="bg-darkgreen text-lightgreen py-2.5 px-6 rounded-[7px] text-base"
         >
-          Create Investment Profile
+          Create Investment
         </Button>
       </div>
 
@@ -164,7 +164,7 @@ const AddInvestment = () => {
                       type="number"
                       name="farmID"
                       id="farmID"
-                      placeholder="Enter farm ID"
+                      placeholder="Enter Farm ID"
                       className="w-full caret-color1 py-3 px-4 outline-none rounded-lg border border-color1 text-sm bg-color1/5 text-gray-700"
                       value={farmID}
                       onChange={(e) => setFarmID(e.target.value)}
@@ -182,7 +182,7 @@ const AddInvestment = () => {
                       type="text"
                       name="investmentName"
                       id="investmentName"
-                      placeholder="Enter product name"
+                      placeholder="Enter Investment Name"
                       className="w-full caret-color1 py-3 px-4 outline-none rounded-lg border border-color1 text-sm bg-color1/5 text-gray-700"
                       value={investmentName}
                       onChange={(e) => setInvestmentName(e.target.value)}
@@ -200,7 +200,7 @@ const AddInvestment = () => {
                       type="text"
                       name="aboutInvestment"
                       id="aboutInvestment"
-                      placeholder="Product Image URI"
+                      placeholder="Enter Investment Description"
                       className="w-full caret-color1 py-3 px-4 outline-none rounded-lg border border-color1 text-sm bg-color1/5 text-gray-700"
                       value={aboutInvestment}
                       onChange={(e: any) => setAboutInvestment(e.target.value)}
@@ -218,7 +218,7 @@ const AddInvestment = () => {
                       type="number"
                       name="investmentTarget"
                       id="investmentTarget"
-                      placeholder="Enter product description"
+                      placeholder="Enter Investment Target"
                       className="w-full caret-color1 py-3 px-4 outline-none rounded-lg border border-color1 text-sm bg-color1/5 text-gray-700"
                       value={investmentTarget}
                       onChange={(e) => setInvestmentTarget(e.target.value)}
@@ -230,13 +230,13 @@ const AddInvestment = () => {
                       htmlFor="investmentEndDate"
                       className="text-gray-700 font-medium ml-1"
                     >
-                      Product Price
+                      Investment Duration
                     </label>
                     <input
                       type="number"
                       name="investmentEndDate"
                       id="investmentEndDate"
-                      placeholder="Enter product price"
+                      placeholder="Enter Investment Duration"
                       className="w-full caret-color1 py-3 px-4 outline-none rounded-lg border border-color1 text-sm bg-color1/5 text-gray-700"
                       value={investmentEndDate}
                       onChange={(e) => setInvestmentEndDate(e.target.value)}

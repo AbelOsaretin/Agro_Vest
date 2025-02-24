@@ -117,7 +117,7 @@ Agro Vest solves land ownership challenges by leveraging blockchain technology t
 
 ## Smart Contract
 
-[Farm CA](https://example.com)
+[Farm CA](https://test.xfiscan.com/address/0x26B8b62e3476a01227cb5DAB00d3A38F15F27D00)
 <br />
 
 [Investment CA](https://test.xfiscan.com/address/0x121A4e1708D02C4F8433E033605D389B58E40Ad2)
