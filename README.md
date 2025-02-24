@@ -1,5 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a id="readme-top"></a>
+
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -7,8 +9,6 @@
 *** Don't forget to give the project a star!
 *** Thanks again! Now go create something AMAZING! :D
 -->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -19,9 +19,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -30,51 +27,79 @@
   </a>
 
   <p align="center">
-    AgroVest is a Real World Asset platform that empowers African farmers to tokenize their businesses, sell products directly, and secure investments.
+    AgroVest is a Real World Asset platform that empowers African farmers by tokenizing their farm business, helping them sell products directly to consumers, and securing investments opportunities to enable them grow their farm.
 
-
-
-  
 </div>
-    
-
-
 
 <!-- GETTING STARTED -->
+
 ## Inspiration
 
-The motivation behind Agro Vest is rooted in the desire to create sustainable agricultural communities. Many farmers face challenges such as lack of access to capital, market inefficiencies, and limited opportunities for growth. Agro Vest addresses these issues by providing a platform where farmers can showcase their projects, attract investment, and build long-term partnerships with backers who are genuinely interested in the success of their ventures.
+African farmers face challenges such as lack of access to capital, market inefficiencies, and limited opportunities for growth. Agro Vest addresses these issues by providing a platform where farmers can showcase their products, attract investment, and build long-term partnerships with backers who are genuinely interested in the success of their farms.
 
+## Problems
 
+Agriculture in Africa faces several significant challenges
 
-## Getting Started
+**1. Limited Access to Finance:** African farmers struggle to get loans and financial services because they lack credit history and collateral. Banks see them as high-risk borrowers.
 
-PeerLend is a groundbreaking platform that brings a new level of sophistication and user empowerment to the DeFi space. Here’s how:
+**2. Market Access:** Farmers rely on middlemen and often don't know fair market prices, leading to lower profits for them. They struggle to find consumers who would buy directly from them.
+**3. Land Ownership Problems:** Many farmers don't have clear proof of land ownership, leading to disputes and making it hard to use land as loan collateral, and in some cases they lose ownership of the land.
+**4. Poor Supply Chain Management:** Farmers can't track their products once they leave the farm, leading to waste and quality issues.
 
+## Solutions
 
-  <div align="left">
-  <a>
-    <img src="images/MarketPlace.png" alt="Logo">
-  </a>
+**1. Limited Access to Finance:**
 
-- **Marketplace**: The Agro Vest marketplace serves as a digital hub where farmers can list their products, services, and investment opportunities. By joining the marketplace, farmers gain access to a global audience, allowing them to showcase their offerings and attract the attention of buyers and investors who are interested in supporting sustainable agriculture.
-
-<br />
+The investment feature of Agro Vest aims to empower African farmers and revolutionize the agricultural sector. It enables investors to directly fund farmers' projects, fostering a mutually beneficial partnership that drives growth and sustainability.
 
 <div align="left">
   <a>
     <img src="images/Investment.png" alt="Logo">
   </a>
 
-- **Investment**: The investment feature of Agro Vest is at the heart of its mission to empower farmers and transform the agricultural landscape. This feature allows investors to directly support farmers by funding their projects, creating a mutually beneficial relationship that fosters growth and sustainability.
+<br />
+
+**2a. Market Access:**
+
+The Agro Vest marketplace serves as a digital hub where farmers can list their products. By joining the marketplace, farmers gain access to a global audience, allowing them to showcase their offerings and attract the attention of buyers from all over the world.
+
+  <div align="left">
+  <a>
+    <img src="images/MarketPlace.png" alt="Logo">
+  </a>
 
 <br />
 
-- **Diverse Product Listings**: Farmers can list a wide range of products, from fresh produce and livestock to value-added goods like dairy products, organic fertilizers, and artisanal items. This diversity allows farmers to reach different market segments, enhancing their sales opportunities and expanding their customer base.
+**2b. Diverse Product Listings**: Farmers can list a wide range of products, from fresh produce and livestock to value-added goods like dairy products, organic fertilizers, and artisanal items. This diversity allows farmers to reach different market segments, enhancing their sales opportunities and expanding their customer base.
 
+  <div align="left">
+  <a>
+    <img src="images/DiverseProduct.png" alt="Logo">
+  </a>
 
+  <br/>
 
-## How We Built It
+**3. Land Ownership Problems:**
+Agro Vest solves land ownership challenges by leveraging blockchain technology to tokenize farmland, providing a secure and transparent digital proof of ownership. This ensures that land records are tamper-proof, reducing disputes and fraud.
+
+  <div align="left">
+  <a>
+    <img src="images/AddFarm.png" alt="Logo">
+  </a>
+
+  <br/>
+
+**4. Poor Supply Chain Management:** Agro Vest solves supply chain inefficiencies by leveraging blockchain technology to create a transparent and traceable agricultural network. This ensures that every stage of the supply chain, from production to delivery, is securely recorded on-chain, reducing fraud and improving accountability.
+
+ <div align="left">
+  <a>
+    <img src="images/TransactionHistory.png" alt="Logo">
+  </a>
+
+  <br/>
+
+<!-- ## How We Built It
 
 - **Solidity Smart Contracts**
 - **Scaffold ETH**
@@ -82,19 +107,13 @@ PeerLend is a groundbreaking platform that brings a new level of sophistication 
 - **The Graph**
 - **Next Js**
 
-
 ## Challenges We Ran Into
 
 - **Circles**::
 - **The Graph**:
-- **Scaffold ETH**: 
+- **Scaffold ETH**: -->
 
-
-
-
-
-<!-- USAGE EXAMPLES -->
-## Contracts
+## Smart Contract
 
 [MarketPlace](https://example.com)
 <br />
@@ -105,54 +124,30 @@ PeerLend is a groundbreaking platform that brings a new level of sophistication 
 [DAO](https://example.com)
 [Escrow](https://example.com)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-<p align="left">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="left">(<a href="#readme-top">back to top</a>)</p>
-
-
+- Insurance Setup For Both Farmers and Investors
+- Supply Chain Setup
 
 <!-- CONTACT -->
+
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+Abel Osaretin - [@DevWizard\_](https://x.com/DevWizard_) - contact.abel321@gmail.com
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-* [Omemgboji Emmanuel](https://github.com/Signor1)
-* [Banwo Olorunsogo](https://github.com/sogobanwo)
+- [Banwo Olorunsogo](https://github.com/sogobanwo)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
 [contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
@@ -181,4 +176,4 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[JQuery-url]: https://jquery.com
