@@ -11,21 +11,15 @@ import {
 import Image from "next/image";
 import React, { FormEvent, useState } from "react";
 
-import useGetAllAvailableInvestment from "@/hooks/ReadHooks/useGetAllAvailableInvestment";
 import useCreateInvestment from "@/hooks/WriteHooks/useCreateInvestment";
 import { toast } from "sonner";
 import { useAccount } from "wagmi";
 import { uploadImageToIPFS } from "@/utils/uploadToIPFS";
 // import { datetimeToEpochTime } from "datetime-epoch-conversion";
 
-import { InvestmentType } from "@/utils/types";
-
 const AddInvestment = () => {
   const { address } = useAccount();
 
-  const { data: investment } = useGetAllAvailableInvestment() as {
-    data: InvestmentType[];
-  };
   const createInvestment = useCreateInvestment();
 
   const [farmID, setFarmID] = useState<any>("");

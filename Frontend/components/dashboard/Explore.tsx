@@ -4,7 +4,6 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import useGetAllAvailableInvestment from "@/hooks/ReadHooks/useGetAllAvailableInvestment";
 import { InvestmentType } from "@/utils/types";
-import AddInvestment from "./AddInvestment";
 
 const ExploreUserFarm = () => {
   const { data: investment } = useGetAllAvailableInvestment() as {
@@ -26,7 +25,7 @@ const ExploreUserFarm = () => {
       </div>
 
       <div className="w-full grid md:grid-cols-2 gap-8">
-        {investment?.map((res: any, index: number) => (
+        {investment?.map((res, index: number) => (
           <div
             key={index}
             className="bg-gray-100 rounded-[10px] p-4 shadow-lg flex flex-col items-end gap-2"

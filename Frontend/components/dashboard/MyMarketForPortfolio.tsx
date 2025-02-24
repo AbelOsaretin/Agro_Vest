@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { usePathname } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 
 import {
@@ -13,23 +12,13 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import Image from "next/image";
-import useGetFarmProductByAddress from "@/hooks/ReadHooks/useGetFarmProductByAddress";
-import { useAccount } from "wagmi";
+
 import useAddFarmProduct from "@/hooks/WriteHooks/useAddFarmProduct";
 import { uploadImageToIPFS } from "@/utils/uploadToIPFS";
 import { toast } from "sonner";
-import { ProductType } from "@/utils/types";
 
 const MyMarket = () => {
   const addProduct = useAddFarmProduct();
-
-  const { address } = useAccount();
-
-  const { data: products } = useGetFarmProductByAddress(address) as {
-    data: ProductType[];
-  };
-
-  const path = usePathname();
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
