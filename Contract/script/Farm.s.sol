@@ -10,8 +10,8 @@ contract FarmScript is Script {
     function run() public {
         vm.startBroadcast();
         farm = new Farm(
-            address(0xAC215e666287e2B02Dc0677B914Da59897E0d286),
-            address(0xe98dcD281C069F0B980111554dFa79889Bc59aD5)
+            address(0x994f29ce3A1d753983cd4Ebb0D84A1CE75ba5e1b),
+            address(0x6Cfa015f4Eac27c328951396791A93d29E84C237)
         );
         vm.stopBroadcast();
     }

@@ -117,14 +117,16 @@ Agro Vest solves land ownership challenges by leveraging blockchain technology t
 
 ## Smart Contract
 
-[MarketPlace](https://example.com)
+[Farm CA](https://example.com)
 <br />
 
-[Investment](https://example.com)
-</br>
-<br />
-[DAO](https://example.com)
-[Escrow](https://example.com)
+[Investment CA](https://test.xfiscan.com/address/0x121A4e1708D02C4F8433E033605D389B58E40Ad2)
+
+[DAO CA](https://example.com)
+
+[Farm Escrow CA](https://test.xfiscan.com/contract/verify?id=0x6cfa015f4eac27c328951396791a93d29e84c237)
+
+[ERC20 Token CA](https://test.xfiscan.com/token/0x994f29ce3A1d753983cd4Ebb0D84A1CE75ba5e1b)
 
 <!-- ROADMAP -->
 

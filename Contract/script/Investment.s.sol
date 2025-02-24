@@ -9,7 +9,7 @@ contract InvestmentScript is Script {
     function setUp() public {}
     function run() public {
         vm.startBroadcast();
-        investment = new Investment(0xAC215e666287e2B02Dc0677B914Da59897E0d286);
+        investment = new Investment(0x994f29ce3A1d753983cd4Ebb0D84A1CE75ba5e1b);
         vm.stopBroadcast();
     }
 }

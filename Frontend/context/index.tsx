@@ -66,7 +66,7 @@ import { createAppKit } from "@reown/appkit/react";
 import { sepolia } from "@reown/appkit/networks";
 import React, { type ReactNode } from "react";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
-import { projectId, wagmiAdapter } from "@/config/config";
+import { projectId, wagmiAdapter, crossfi } from "@/config/config";
 
 // Set up queryClient
 const queryClient = new QueryClient();
@@ -87,8 +87,8 @@ const metadata = {
 createAppKit({
   adapters: [wagmiAdapter],
   projectId,
-  networks: [sepolia],
-  defaultNetwork: sepolia,
+  networks: [sepolia, crossfi],
+  defaultNetwork: crossfi,
   metadata: metadata,
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
