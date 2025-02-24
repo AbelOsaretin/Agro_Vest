@@ -32,7 +32,7 @@ export const navDashboardLinks: NavLink[] = [
     href: "/user/portfolio",
   },
   {
-    name: "Explore",
+    name: "Farm",
     href: "/user/explore",
   },
   {

@@ -21,7 +21,7 @@ contract FarmTest is Test {
     function test_Farm_Registration() public {
         vm.startPrank(farmOwner);
 
-        uint256 phoneContact = uint256(701234);
+        string memory phoneContact = "701234";
 
         vm.expectRevert(Error.NameCannotBeEmpty.selector);
 
@@ -47,7 +47,7 @@ contract FarmTest is Test {
 
     function test_FarmDetails_Update() public {
         test_Farm_Registration();
-        address farmOwner = makeAddr("farmOwner");
+
         address impersonator = makeAddr("Impersonator");
         vm.expectRevert(Error.InvalidFarmIndex.selector);
         farm.updateDetails(
@@ -55,7 +55,7 @@ contract FarmTest is Test {
             "AbelSnailFarm",
             "AbelSnailFarmPicture",
             "Lagos, Nigeria",
-            uint256(706555),
+            "706555",
             "example@gmail.com"
         );
         vm.expectRevert(Error.YouAreNotRegistered.selector);
@@ -64,7 +64,7 @@ contract FarmTest is Test {
             "AbelSnailFarm",
             "AbelSnailFarmPicture",
             "Lagos, Nigeria",
-            uint256(706555),
+            "706555",
             "example@gmail.com"
         );
 
@@ -73,7 +73,7 @@ contract FarmTest is Test {
             "FakeFarm",
             "FakeFarmPicture",
             "Lagos, Nigeria",
-            uint256(701233),
+            "701233",
             impersonator,
             "example@gmail.com"
         );
@@ -83,7 +83,7 @@ contract FarmTest is Test {
             "AbelSnailFarm",
             "AbelSnailFarmPicture",
             "Lagos, Nigeria",
-            uint256(706555),
+            "706555",
             "example@gmail.com"
         );
         vm.stopPrank();
@@ -94,7 +94,7 @@ contract FarmTest is Test {
             "AbelSnailFarm",
             "AbelSnailFarmPicture",
             "Lagos, Nigeria",
-            uint256(706555),
+            "706555",
             "example@gmail.com"
         );
         vm.stopPrank();

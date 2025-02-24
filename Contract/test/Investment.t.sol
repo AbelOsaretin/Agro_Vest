@@ -30,7 +30,7 @@ contract InvestmentTest is Test {
             "AbelFarm",
             "AbelFarmPicture",
             "Lagos, Nigeria",
-            uint256(7094843),
+            "7094843",
             farmOwner,
             "example@gmail.com"
         );

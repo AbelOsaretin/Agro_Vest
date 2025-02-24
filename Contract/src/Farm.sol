@@ -23,7 +23,7 @@ contract Farm {
         string business_name;
         string business_image;
         string business_location;
-        uint256 business_contact;
+        string business_contact;
         string business_email;
         address farmerAddress;
         bool isRegistered;
@@ -65,7 +65,7 @@ contract Farm {
         string memory _name,
         string memory _image,
         string memory _location,
-        uint256 _contact_info,
+        string memory _contact_info,
         address _address,
         string memory _email
     ) public {
@@ -101,7 +101,7 @@ contract Farm {
         string memory _name,
         string memory _image,
         string memory _location,
-        uint256 _contact_info,
+        string memory _contact_info,
         string memory _email
     ) public {
         if (_index >= farms.length) {

@@ -1,13 +1,30 @@
-import React from "react"
-import type { NextPage } from "next"
-import Products from "@/components/dashboard/portfolioSubRoutes/Products"
+"use client";
+import React, { useEffect, useState } from "react";
+import type { NextPage } from "next";
+import Products from "@/components/dashboard/portfolioSubRoutes/Products";
+import useGetFarmProductByAddress from "@/hooks/ReadHooks/useGetFarmProductByAddress";
+import { useAccount } from "wagmi";
+import { ProductType } from "@/utils/types";
 
 const PortfolioProducts: NextPage = () => {
-    return (
-        <main className="w-full flex flex-col overflow-x-hidden">
-            <Products />
-        </main>
-    )
-}
+  const { address } = useAccount();
 
-export default PortfolioProducts
+  const { data: products } = useGetFarmProductByAddress(address);
+  console.log("Expected product Data ", products);
+
+  const [arrayOfProducts, setArrayOfProducts] = useState<ProductType[]>([]);
+
+  useEffect(() => {
+    if (Array.isArray(products)) {
+      setArrayOfProducts(products);
+    }
+  }, [products]);
+
+  return (
+    <main className="w-full flex flex-col overflow-x-hidden">
+      <Products data={arrayOfProducts} />
+    </main>
+  );
+};
+
+export default PortfolioProducts;
