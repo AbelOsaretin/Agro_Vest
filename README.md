@@ -44,7 +44,9 @@ Agriculture in Africa faces several significant challenges
 **1. Limited Access to Finance:** African farmers struggle to get loans and financial services because they lack credit history and collateral. Banks see them as high-risk borrowers.
 
 **2. Market Access:** Farmers rely on middlemen and often don't know fair market prices, leading to lower profits for them. They struggle to find consumers who would buy directly from them.
+
 **3. Land Ownership Problems:** Many farmers don't have clear proof of land ownership, leading to disputes and making it hard to use land as loan collateral, and in some cases they lose ownership of the land.
+
 **4. Poor Supply Chain Management:** Farmers can't track their products once they leave the farm, leading to waste and quality issues.
 
 ## Solutions
@@ -130,6 +132,7 @@ Agro Vest solves land ownership challenges by leveraging blockchain technology t
 
 - Insurance Setup For Both Farmers and Investors
 - Supply Chain Setup
+- Full Account Abstraction
 
 <!-- CONTACT -->
 
